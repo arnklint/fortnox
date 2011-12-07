@@ -1,4 +1,4 @@
 module Fortnox
-  class Customer
+  class Customer < API
   end
 end

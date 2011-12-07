@@ -1,3 +1,5 @@
+require "httparty"
+
 require "fortnox/version"
 require "fortnox/api"
 require "fortnox/invoice"
