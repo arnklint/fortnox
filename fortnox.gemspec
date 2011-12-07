@@ -5,8 +5,8 @@ require "fortnox/version"
 Gem::Specification.new do |s|
   s.name        = "fortnox"
   s.version     = Fortnox::VERSION
-  s.authors     = ["Jonas Arnklint"]
-  s.email       = ["jonas@fkw.se"]
+  s.authors     = ["Jonas Arnklint", "Kevin Sjöberg"
+  s.email       = ["jonas@fkw.se", "kev.sjoberg@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{TODO: Write a gem description}
