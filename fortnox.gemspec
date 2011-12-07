@@ -5,7 +5,7 @@ require "fortnox/version"
 Gem::Specification.new do |s|
   s.name        = "fortnox"
   s.version     = Fortnox::VERSION
-  s.authors     = ["Jonas Arnklint", "Kevin Sjöberg"
+  s.authors     = ["Jonas Arnklint", "Kevin Sjöberg"]
   s.email       = ["jonas@fkw.se", "kev.sjoberg@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{TODO: Write a gem summary}
@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rspec"
+  s.add_development_dependency "guard-rspec"
   s.add_runtime_dependency "httparty"
 end
