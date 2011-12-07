@@ -7,4 +7,5 @@ require "fortnox/customer"
 
 module Fortnox
   # Your code goes here...
+  class ValidationError < StandardError; end
 end
