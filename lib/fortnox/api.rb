@@ -13,7 +13,7 @@ module Fortnox
     end
 
     def self.connection
-      { token: @@token, db: @@database }
+      { :token => @@token, :db => @@database }
     end
 
     def self.run(method, call, attributes={})
