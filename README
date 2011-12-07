@@ -1,7 +1,8 @@
 # Fortnox Ruby Wrapper
+Based on HTTParty
+For Invoicing, Customers
 
 ## Testing
 * RSpec
+* Fakeweb/VCR?
 * guard start
-
-
