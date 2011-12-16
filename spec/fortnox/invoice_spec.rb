@@ -9,8 +9,7 @@ module Fortnox
     end
 
     let :attributes do
-      {
-	      :root => :invoice,        :tdate      =>  future(0),        :ddate      =>  future(30),        :edate      =>  future(30),        :ourref     =>  'Kevin Sjöberg',        :yourref    =>  'Jonas Arnklint',        :roundoff   =>  1,        :freight    =>  0,        :totalvat   =>  419,        :total      =>  2095,        :contact => {        	:id       =>  1,          :name     =>  'Exempel AB',          :address  =>  'Exempelgatan',          :zip      =>  '000 00',          :city     =>  'Exempel'        },        :invoicerows => [
+      {        :tdate      =>  future(0),        :ddate      =>  future(30),        :edate      =>  future(30),        :ourref     =>  'Kevin Sjöberg',        :yourref    =>  'Jonas Arnklint',        :roundoff   =>  1,        :freight    =>  0,        :totalvat   =>  419,        :total      =>  2095,        :contact => {        	:id       =>  1,          :name     =>  'Exempel AB',          :address  =>  'Exempelgatan',          :zip      =>  '000 00',          :city     =>  'Exempel'        },        :invoicerows => [
 	        {            :descr  =>  'Gitarr',            :price  =>  21,            :amount =>  50,            :vat    =>  25          },          {            :descr  =>   'Piano',            :price  =>   450,            :amount =>   1,            :vat    =>   25          },          {            :descr  =>   'Trumpet',            :price  =>   176,            :amount =>   1,            :vat    =>   25          }        ]
     	}
     end
