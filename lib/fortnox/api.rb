@@ -8,8 +8,8 @@ module Fortnox
     debug_output $stdout
 
     def self.establish_connection(opts={})
-      @@token     = opts[:token]    ||= ENV['token']
-      @@database  = opts[:database] ||= ENV['database']
+      @@token     = opts[:token]    ||= ENV['fortnox_token']
+      @@database  = opts[:database] ||= ENV['fortnox_database']
     end
 
     def self.connection
