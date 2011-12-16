@@ -5,7 +5,7 @@ require "spec_helper"
 module Fortnox
   describe Invoice do
     before :all do
-      Fortnox::API.establish_connection(:token => '12961a41b1fab7f93787a56074b5bc7d', :database => '66291')
+      Fortnox::API.establish_connection
     end
 
     let :attributes do
