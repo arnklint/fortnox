@@ -2,6 +2,8 @@ module Fortnox
   class API
     include HTTParty
 
+    cattr_reader :xml
+
     base_uri  'https://kund2.fortnox.se/ext/'
     format    :xml
 
@@ -17,8 +19,12 @@ module Fortnox
     end
 
     def self.run(method, call, attributes={})
-	    xml = attributes.to_xml(:root => attributes.delete(:root), :indent => 2)
-      self.send method, "/#{call.to_s}.php", :query => query_params(attributes[:query]), :body => { :xml => xml }
+      self.send method, "/#{call.to_s}.php", :query => query_params(attributes[:query]),
+                                             :body  => { :xml => build_xml(attributes) }
+    end
+
+    def self.build_xml(attributes)
+      @@xml = attributes.to_xml(:root => attributes.delete(:root), :indent => 2)
     end
 
     private
