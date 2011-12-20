@@ -9,24 +9,44 @@ module Fortnox
     end
 
     let :attributes do
-      {        :tdate      =>  future(0),        :ddate      =>  future(30),        :edate      =>  future(30),        :ourref     =>  'Kevin Sjöberg',        :yourref    =>  'Jonas Arnklint',        :roundoff   =>  1,        :freight    =>  0,        :totalvat   =>  419,        :total      =>  2095,        :contact => {        	:id       =>  1,          :name     =>  'Exempel AB',          :address  =>  'Exempelgatan',          :zip      =>  '000 00',          :city     =>  'Exempel'        },        :invoicerows => [
-	        {            :descr  =>  'Gitarr',            :price  =>  21,            :amount =>  50,            :vat    =>  25          },          {            :descr  =>   'Piano',            :price  =>   450,            :amount =>   1,            :vat    =>   25          },          {            :descr  =>   'Trumpet',            :price  =>   176,            :amount =>   1,            :vat    =>   25          }        ]
-    	}
-    end
+      {
+        :id         => 1,
+        :tdate      => future(0),        :ddate      => future(30),        :edate      => future(30),        :ourref     => 'Foo Bar',        :yourref    => 'Bar Foo',        :roundoff   => 1,        :freight    => 0,        :totalvat   => 50,        :total      => 250,
+        :contact    => {
+          :id       => 1,
+          :name     => 'Example AB',
+          :address  => 'Example street',
+          :city     => 'Example',
+          :zip      => '123 45'
+        },
+        :invoicerows  => [
+          {
+            :descr    => 'Sample product',            :price    => 100,            :amount   => 2,            :vat      => 25
+          }
+        ]
+      }
+    end      
     
     it "should create invoice" do
       invoice = Invoice.create(attributes)
-      invoice.code.should equal(200)
-      invoice.parsed_response.should_not include("error")
+      xml     = Invoice.xml
+
+      xml.should eq(Invoice.build_xml(attributes.merge(:root => :invoice)))
+      invoice.parsed_response.should include("result")
+    end
+    
+    it "it should update invoice" do
+      new_attributes  = attributes.merge(:id => 1, :ourref => 'Bar Foo', :yourref => 'Foo Bar')
+      invoice         = Invoice.update(new_attributes)
+      xml             = Invoice.xml
+
+      xml.should eq(Invoice.build_xml(new_attributes.merge(:root => :invoice)))
       invoice.parsed_response.should include("result")
     end
 
-    it "is destroyed" do
-      pending "skip this one"
-    end
-
-    describe "Updating" do
-	    pending "Skip this one"
+    it "it should destroy invoice" do
+      invoice = Invoice.destroy(1)
+      invoice.parsed_response.should include("result")
     end
   end
 end
