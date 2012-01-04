@@ -1,5 +1,5 @@
 require "httparty"
-require "active_support"
+require "gyoku"
 
 require "fortnox/version"
 require "fortnox/api"

@@ -23,8 +23,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "vcr"
   s.add_development_dependency "fakeweb"
   
-  s.add_runtime_dependency "i18n"
-  s.add_runtime_dependency "activesupport", "2.3.8"
-  s.add_runtime_dependency "builder"
   s.add_runtime_dependency "httparty"
+  s.add_runtime_dependency "gyoku"
 end
