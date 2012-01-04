@@ -2,10 +2,6 @@ require "spec_helper"
 
 module Fortnox
   describe Customer do
-    before :all do
-      Fortnox::API.establish_connection
-    end
-
     let :attributes do
       {
         :id         => 1,
@@ -16,19 +12,21 @@ module Fortnox
         :pricelist  => 'A'
       }
     end
+    
+    it "makes a post request and dismisses specified id" do
+      Customer.stub(:run) { { 'result' => { 'id' => '2' } } }
 
-    it "should create customer" do
-      customer = Customer.create(attributes)
+      Customer.should_receive(:run).with(:post, :set_contact, { :contact => attributes.reject { |k, v| k == :id } })
+      customer_number = Customer.create(attributes)
 
-      customer.parsed_response.should_not include('errror')
-      customer.parsed_response.should include('result')
+      customer_number.should_not eq(attributes[:id])
     end
 
-    it "should update customer" do
-      customer = Customer.update(attributes.merge(:name => 'Example Customer AB'))
+    it "makes a post request and preserves specified id" do
+      Customer.stub(:run) { {'result' => {'id' => '1'}} }
 
-      customer.parsed_response.should_not include('errror')
-      customer.parsed_response.should include('result')
+      Customer.should_receive(:run).with(:post, :set_contact, {:contact => attributes})
+      customer_number = Customer.update(attributes)
     end
   end
 end
