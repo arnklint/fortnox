@@ -16,7 +16,7 @@ module Fortnox
       private
       
       def with_root(attributes)
-	      attributes.merge(:root => :invoice)
+        { :invoice => attributes }
 	    end
     end
   end

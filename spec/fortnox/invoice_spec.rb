@@ -21,7 +21,9 @@ module Fortnox
         },
         :invoicerows  => [
           {
-            :descr    => 'Sample product',            :price    => 100,            :amount   => 2,            :vat      => 25
+            :invoicerow => {
+              :descr    => 'Sample product',              :price    => 100,              :amount   => 2,              :vat      => 25
+            }
           }
         ]
       }
@@ -29,23 +31,22 @@ module Fortnox
     
     it "should create invoice" do
       invoice = Invoice.create(attributes)
-      xml     = Invoice.xml
 
-      xml.should eq(Invoice.build_xml(attributes.merge(:root => :invoice)))
+      invoice.parsed_response.should_not include("error")
       invoice.parsed_response.should include("result")
     end
     
     it "it should update invoice" do
       new_attributes  = attributes.merge(:id => 1, :ourref => 'Bar Foo', :yourref => 'Foo Bar')
       invoice         = Invoice.update(new_attributes)
-      xml             = Invoice.xml
 
-      xml.should eq(Invoice.build_xml(new_attributes.merge(:root => :invoice)))
+      invoice.parsed_response.should_not include("error")
       invoice.parsed_response.should include("result")
     end
 
     it "it should destroy invoice" do
       invoice = Invoice.destroy(1)
+      invoice.parsed_response.should_not include("error")
       invoice.parsed_response.should include("result")
     end
   end
