@@ -2,16 +2,7 @@ require "spec_helper"
 
 module Fortnox
   describe Customer do
-    let :attributes do
-      {
-        :id         => 1,
-        :name       => 'Example AB',
-        :address    => 'Example street',
-        :city       => 'Example',
-        :zip        => '123 45',
-        :pricelist  => 'A'
-      }
-    end
+    let(:attributes) { {:id => 1, :name => 'Example AB'} }
     
     it "makes a post request and dismisses specified id" do
       Customer.stub(:run) { { 'result' => { 'id' => '2' } } }
