@@ -1,6 +1,22 @@
 require "fortnox"
+require "yaml"
 require "vcr"
 
+
+def fixtures(fixture)
+  @@fixtures ||= load_fixtures
+  @@fixtures[fixture]
+end
+
+def load_fixtures
+  fixtures = {}
+
+  Dir['spec/fixtures/*.yml'].each do |file|
+    name = File.basename(file, File.extname(file)).to_sym
+    fixtures[name] = YAML::load(File.open(file).read)
+  end
+
+  fixtures
 end
 
 VCR.config do |c|

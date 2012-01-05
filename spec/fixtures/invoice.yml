@@ -1,0 +1,22 @@
+id: 1
+tdate: '2012-01-04'
+ddate: '2012-02-03'
+edate: '2012-02-03'
+ourref: 'Foo Bar'
+yourref: 'Bar Foo'
+roundoff: 1.0
+freight: 0.0
+totalvat: 50.0
+total: 250.0
+contact:
+  id: 1
+  name: 'Example AB'
+  address: 'Example street'
+  city: 'Example'
+  zip: '123 45'
+invoicerows:
+  invoicerow:
+    descr: 'Sample product'
+    price: 100.0
+    amount: 2.0
+    vat: 25.0
