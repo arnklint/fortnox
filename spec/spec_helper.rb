@@ -1,4 +1,5 @@
 require "fortnox"
+require "vcr"
 
 # days in the future formatted to fortnox date string
 def future(days)
