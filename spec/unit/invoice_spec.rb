@@ -8,11 +8,6 @@ module Fortnox
       Invoice.stub(:run) { {'result' => {'id' => '2'}} }
     end
     
-    it "makes a post request and return an integer" do
-      invoice_number = Invoice.create(attributes)
-      invoice_number.should be_a(Integer)
-    end
-
     it "makes a post request and dismisses specified id" do
       Invoice.should_receive(:run).with(:post, :set_invoice, {:invoice => attributes.reject { |k,v| k == :id }})
       invoice_number = Invoice.create(attributes)
