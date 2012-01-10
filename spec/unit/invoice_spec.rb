@@ -20,6 +20,7 @@ module Fortnox
     end
 
     it "makes a post request with query parameter id" do
+      Invoice.stub(:run) { {'result' => '2'} }
       Invoice.should_receive(:run).with(:post, :set_invoice_cancel, {:query => {:id => 2}})
       Invoice.destroy(2)
     end

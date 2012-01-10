@@ -7,8 +7,9 @@ module Fortnox
 
     class << self
       def establish_connection(opts={})
-        @@token     = opts[:token]    ||= ENV['fortnox_token']
-        @@database  = opts[:database] ||= ENV['fortnox_database']
+        @@token = opts[:token] || ENV['fortnox_token']
+        @@database = opts[:database] || ENV['fortnox_database']
+        @@query_parameters = connection
       end
 
       def connection
@@ -24,7 +25,7 @@ module Fortnox
       end
 
       def query_parameters
-        @@query_parameters ||= connection
+        @@query_parameters
       end
 
       def query_parameters=(params={})
