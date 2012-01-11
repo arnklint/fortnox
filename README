@@ -6,3 +6,10 @@ For Invoicing, Customers
 * RSpec
 * Fakeweb/VCR?
 * guard start
+
+## Poor mans docs
+
+* Som det fungerar nu är det Fortnox::Invoice.create .update .destroy som gäller
+* Du får ett ID tillbaka när det gick bra annars false.
+* ID behövs användas för att exempelvis uppdatera.
+* Värt att notera är att när du lägger till en kontakt på en faktura är det inte ID du får när du skapar en kontakt som gäller, ID då är kundnr.
