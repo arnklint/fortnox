@@ -5,7 +5,11 @@ module Fortnox
         attributes = attributes.reject { |k,v| k == :id } if attributes[:id]
 
         response = run :post, :set_invoice, with_root(attributes)
-        response['result'] ? response['result']['id'].to_i : false
+        if response['result']
+          return response['result']['id'].to_i
+        else
+          raise Error, response.body
+        end
       end
       
       def update(attributes={})

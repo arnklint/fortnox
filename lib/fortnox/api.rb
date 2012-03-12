@@ -32,7 +32,7 @@ module Fortnox
         @@query_parameters = query_parameters.merge(params)
       end
 
-      private 
+      private
 
       def build_xml(attributes)
         attributes.delete(:query) if attributes[:query]
