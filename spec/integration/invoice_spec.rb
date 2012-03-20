@@ -4,7 +4,7 @@ module Fortnox
   describe Invoice do
     before(:each) { API.establish_connection }
 
-    it "should return error on invalid invoice creation" do
+    it "should raise error on invalid invoice creation" do
       VCR.use_cassette('invoice/create_invalid') do
         lambda {
           Invoice.create(fixtures(:invoice).delete('tdate'))
