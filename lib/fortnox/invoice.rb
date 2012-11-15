@@ -24,7 +24,7 @@ module Fortnox
 
       def show(id)
         response = run :get, :get_invoice, { :query => { :id => id } }
-        response['invoice'] ? response['invoice']['status'] : false
+        response['invoice'] ? response['invoice'] : false
       end
 
       private
