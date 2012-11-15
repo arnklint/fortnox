@@ -34,5 +34,12 @@ module Fortnox
         invoice_no.should eq(1)
       end
     end
+
+    it "should fetch invoice with id" do
+      VCR.use_cassette('invoice/show') do
+        invoice_no = Invoice.show(1)
+        invoice_no.status.should be_a(String)
+      end
+    end
   end
 end

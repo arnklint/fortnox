@@ -11,9 +11,9 @@ module Fortnox
           raise Error, response.body
         end
       end
-      
+
       def update(attributes={})
-	      response = run :post, :set_invoice, with_root(attributes)
+        response = run :post, :set_invoice, with_root(attributes)
         response['result'] ? response['result']['id'].to_i : false
       end
 
@@ -21,12 +21,17 @@ module Fortnox
         response = run :post, :set_invoice_cancel, { :query => { :id => id } }
         response['result'] ? response['result'].to_i : false
       end
-      
+
+      def show(id)
+        response = run :get, :get_invoice, { :query => { :id => id } }
+        response['invoice'] ? response['invoice']['status'] : false
+      end
+
       private
-      
+
       def with_root(attributes)
         { :invoice => attributes }
-	    end
+      end
     end
   end
 end
