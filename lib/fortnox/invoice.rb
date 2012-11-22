@@ -27,6 +27,11 @@ module Fortnox
         response['invoice'] ? response['invoice'] : false
       end
 
+      def payed
+        response = run :get, :get_invoices, { :query => { :filter => "finalpayed" } }
+        response['invoices']['invoice']
+      end
+
       private
 
       def with_root(attributes)

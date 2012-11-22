@@ -41,5 +41,12 @@ module Fortnox
         invoice_no.status.should be_a(String)
       end
     end
+
+    it "fetches payed invoices" do
+      VCR.use_cassette('invoice/payed') do
+        invoices = Invoice.payed
+        invoices.should be_a(Array)
+      end
+    end
   end
 end

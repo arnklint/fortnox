@@ -19,9 +19,9 @@ def load_fixtures
   fixtures
 end
 
-VCR.config do |c|
+VCR.configure do |c|
   c.default_cassette_options = {:match_requests_on => [:method, :uri, :body]}
   c.cassette_library_dir = 'spec/fixtures/cassettes'
-  c.stub_with :webmock
+  c.hook_into :webmock
   c.ignore_localhost = true
 end
