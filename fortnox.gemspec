@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "fortnox"
   s.version     = Fortnox::VERSION
   s.authors     = ["Jonas Arnklint", "Kevin Sjöberg"]
-  s.email       = ["jonas@fkw.se", "kev.sjoberg@gmail.com"]
+  s.email       = ["jonas.arnklint@pushforward.se", "kev.sjoberg@gmail.com"]
   s.homepage    = "http://pushforward.se"
   s.summary     = %q{Small Ruby wrapper around Fortnox API}
   s.description = %q{Handle invoices and customers through the Fortnox API}
